@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FakeShop</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<header th:replace="~{fragments/header :: ShopHeader}"></header>
+<a th:href="@{/registration/register-form}" class="register-btn" style="float: right; margin-right: 20px; margin-top: 10px;">Rejestracja</a>
+<a th:href="@{/login}" class="register-btn" style="float: right; margin-right: 20px; margin-top: 40px;">Login</a>
+<div th:if="${errorMessage}" class="alert alert-danger">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<div class="filter-bar" style="float: left;">
+    <form id="filter-form">
+        <div>
+            <label for="condition">Stan:</label>
+            <select id="condition" name="condition">
+                <option value="all">Wszystkie</option>
+                <option value="new">Nowe</option>
+                <option value="used">Używane</option>
+            </select>
+        </div>
+        <div>
+            <label for="price-from">Cena od:</label>
+            <input type="text" id="price-from" name="price-from">
+        </div>
+        <div>
+            <label for="price-to">Cena do:</label>
+            <input type="text" id="price-to" name="price-to">
+        </div>
+        <div>
+            <button type="submit">Filtruj</button>
+        </div>
+    </form>
+</div>
+
+<div class="sort-bar" style="float: center; margin-top: 10px;">
+    <label>Sortuj według ceny:</label>
+    <button id="sort-lowest">Najniższa</button>
+    <button id="sort-highest">Najwyższa</button>
+</div>
+
+<main class="main-content">
+    <ul class="item-list">
+        <li th:each="item : ${items}" class="item">
+            <img th:src="@{${item.imgUrl}}">
+            <div class="item-details">
+                <p class="item-name" th:text="${item.name}"></p>
+                <div>
+                    <span>Cena:</span>
+                    <span th:text="${item.price}"></span>
+                    <span>zł</span>
+                </div>
+                <a th:href="@{'/add/' + ${item.id}}" class="add-btn">Dodaj do koszyka</a>
+            </div>
+        </li>
+    </ul>
+</main>
+
+<!-- JavaScript obsługujący sortowanie i filtrowanie -->
+<script>
+    // Dodaj tutaj kod JavaScript do obsługi sortowania i filtrowania
+</script>
+
+</body>
+</html>

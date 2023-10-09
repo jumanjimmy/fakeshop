@@ -1,0 +1,326 @@
+    body {
+        margin: 0;
+    }
+
+    header{
+        background-color: black;
+        color: white;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .home-link {
+      text-decoration: none;
+      color: white;
+    }
+
+    .home-link:hover {
+      color: grey;
+    }
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .title:hover {
+      color: grey;
+    }
+
+
+    .main-content {
+        background-color: rgb(230, 230, 230);
+        margin: auto;
+        margin-top: 30px;
+        width: 75%;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+
+
+    .item {
+        background-color: #f9f9f9; /* Kolor tła */
+        width: 250px;
+        border: 1px solid #ddd; /* Cienka obramówka */
+        border-radius: 5px; /* Zaokrąglenie rogów */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Cień */
+        margin: 10px; /* Margines między przedmiotami */
+        padding: 10px;
+        text-align: center;
+        transition: background-color 0.3s ease;
+        display: flex;
+        allign-items: center;
+        margin-bottom: 20px;
+    }
+    .item:hover {
+        background-color: #e0e0e0; /* Kolor tła po najechaniu myszką */
+    }
+
+    .item img {
+        width: 20px;
+        height: 26px;
+        margin-right: 10px;
+
+    }
+
+    .item-name{
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding: 3px;
+        font-size: larger;
+        font-weight: bold;
+        width: calc(100% - 6px);
+        border-radius: 5px;
+        margin-top: 0;
+    }
+
+    .item img{
+        width: 150px;
+        height: 200px;
+    }
+
+    .add-btn{
+        text-decoration: none;
+        background-color: #007bff;
+        color: white;
+        width: 70%;
+        text-align: center;
+        padding: 5px;
+        margin-left: auto;
+        margin-top: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+
+    .add-btn:hover {
+        background-color: rgb(88, 88, 88);
+    }
+
+    .cart-ico{
+        text-decoration: none;
+        color: white;
+    }
+
+    .cart-ico:hover{
+        color: grey;
+    }
+
+
+
+    table, tr {
+        width: 80%;
+        border: 1px solid black;
+    }
+
+    th{
+        text-align: left;
+        border: 1px solid black;;
+    }
+
+    td img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .mbtn{
+        background-color: blanchedalmond;
+        text-decoration: none;
+        display: block;
+        width: 30px;
+        height: 25px;
+        text-align: center;
+        border-radius: 5px;
+        padding-top: 5px;
+        font-size: larger;
+        font-weight: bold;
+    }
+
+    td p{
+        margin: 3px;
+        padding: 5px
+    }
+
+    form {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form label{
+        width: 100%;
+    }
+
+    .infoMsg{
+        width: 100%;
+        color: green;
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .register-btn {
+        display: inline-block;
+        padding: 10px 20px; /* Rozmiar przycisku */
+        font-size: 16px; /* Rozmiar czcionki */
+        background-color: #007bff; /* Kolor tła przycisku */
+        color: #fff; /* Kolor tekstu na przycisku */
+        border: none; /* Brak obramowania */
+        border-radius: 5px; /* Zaokrąglenie rogów */
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        transition: background-color 0.3s ease; /* Animacja zmiany koloru tła */
+    }
+
+    .register-btn:hover {
+        background-color: #0056b3; /* Kolor tła po najechaniu myszką */
+    }
+
+
+    /* Resetowanie domyślnych stylów przeglądarki */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif; /* Wybierz odpowiednią czcionkę */
+    }
+
+    /* Styl dla kontenera formularza */
+    .registration-container {
+        display: flex;
+        flex-direction: column; /* Układ pionowy */
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    /* Styl dla formularza rejestracji */
+    .registration-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        max-width: 400px; /* Możesz dostosować szerokość formularza do własnych preferencji */
+        text-align: center; /* Wyśrodkowanie tekstu w formularzu */
+    }
+
+    /* Styl dla tytułu formularza */
+    .registration-form h2 {
+        margin-bottom: 20px;
+        font-family: 'Helvetica Neue', sans-serif; /* Wybierz inną czcionkę */
+    }
+
+    /* Styl dla grupy formularza */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Styl dla etykiety formularza */
+    .form-group label {
+        display: block;
+        font-weight: bold;
+    }
+
+    /* Styl dla pól wprowadzania tekstu */
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-family: Arial, sans-serif; /* Wybierz odpowiednią czcionkę */
+    }
+
+    /* Styl dla przycisku rejestracji */
+    .register-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-family: 'Helvetica Neue', sans-serif; /* Wybierz inną czcionkę */
+    }
+
+    /* Styl dla przycisku rejestracji po najechaniu myszką */
+    .register-button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Styl dla kontenera filtrów */
+    .filter-bar {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Styl dla etykiet i pól filtrów */
+    .filter-bar label, .filter-bar select, .filter-bar input[type="text"] {
+        margin-right: 10px;
+    }
+
+    /* Styl dla przycisku Filtruj */
+    .filter-bar button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 5px 15px;
+    }
+
+    /* Styl dla przycisku Filtruj po najechaniu myszką */
+    .filter-bar button:hover {
+        background-color: rgb(88, 88, 88);
+    }
+
+    /* Styl dla paska sortowania */
+    .sort-bar {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Styl dla etykiety sortowania */
+    .sort-bar label {
+        margin-right: 10px;
+    }
+
+    /* Styl dla przycisków sortowania */
+    .sort-bar button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+
+    /* Styl dla przycisków sortowania po najechaniu myszką */
+    .sort-bar button:hover {
+        background-color: rgb(88, 88, 88);
+    }
