@@ -9,7 +9,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import training.jimmy.FakeShop.event.RegistrationCompleteEvent;
 import training.jimmy.FakeShop.model.User;
-import training.jimmy.FakeShop.token.VerificationTokenRepository;
 import training.jimmy.FakeShop.token.VerificationTokenService;
 
 import java.io.UnsupportedEncodingException;
@@ -42,7 +41,7 @@ public class RegistrationCompleteEventListener implements ApplicationListener<Re
     public void sendVerificationEmail(String url) throws MessagingException, UnsupportedEncodingException {
         String subject = "Email Verification";
         String senderName = "FakeShop Verification Service";
-        String mailContent = "<p> Hi, "+ user.getFirstName()+ ", </p>"+
+        String mailContent = "<p> Hi, "+ user.getFirstName()+ ". </p>"+
                 "<p>Thank you for registering with us,</p>" +
                 "<p>Please, follow the link below to complete your registration:</p>"+
                 "<a href=\"" +url+ "\">Verify your email to activate your account</a>"+

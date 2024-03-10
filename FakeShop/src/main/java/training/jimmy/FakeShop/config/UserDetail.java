@@ -1,5 +1,6 @@
 package training.jimmy.FakeShop.config;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,20 +15,37 @@ import java.util.stream.Collectors;
 @Data
 public class UserDetail implements UserDetails {
 
-    private String username;
+    private String email;
+    private String firstName;
+    private String lastName;
     private String password;
+    private String userName;
+    private byte[] avatar;
     private boolean isEnabled;
     private List<GrantedAuthority> authorities;
 
+    @Builder
     public UserDetail (User user){
-        this.username = user.getEmail();
-        this.password = getPassword();
+        this.email = user.getEmail();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.password = user.getPassword();
+        this.userName = user.getUserName();
+        this.avatar = user.getAvatar();
         this.isEnabled = user.isEnabled();
         this.authorities =
                 Arrays.stream(user.getRoles().toString().split(","))
                         .map(SimpleGrantedAuthority:: new)
                         .collect(Collectors.toList());
+    }
 
+    public static UserDetailBuilder builder() {
+        return new UserDetailBuilder();
+    }
+
+
+    public String getEmail() {
+        return email;
     }
 
     @Override
@@ -40,10 +58,12 @@ public class UserDetail implements UserDetails {
         return password;
     }
 
+
     @Override
     public String getUsername() {
-        return username;
+        return firstName;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {

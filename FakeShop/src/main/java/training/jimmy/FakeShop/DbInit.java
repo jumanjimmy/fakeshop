@@ -47,10 +47,12 @@ public class DbInit implements CommandLineRunner {
 
 
         User user = new User();
-        user.setEmail("cwel@wp.pl");
-        user.setPassword("cwel");
+        user.setEmail("admin@wp.pl");
+        user.setPassword("admin");
         user.setFirstName("jakub");
         user.setLastName("dziag");
+        user.setUserName("adminek");
+        user.setEnabled(true);
 
         userRepository.save(user);
 

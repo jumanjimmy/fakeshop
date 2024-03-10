@@ -17,25 +17,29 @@
     </div>
     <br />
     <div class="registration-form">
-        <h2>Rejestracja</h2>
+        <h2>Sign up</h2>
         <form th:action="@{/registration/register}" th:object="${user}" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" th:name="email" required>
             </div>
             <div class="form-group">
-                <label for="password">Hasło:</label>
+                <label for="password">Password:</label>
                 <input type="password" id="password" th:name="password" required>
             </div>
             <div class="form-group">
-                <label for="firstName">Imię:</label>
+                <label for="firstName">First name:</label>
                 <input type="text" id="firstName" th:name="firstName" required>
             </div>
             <div class="form-group">
-                <label for="lastName">Nazwisko:</label>
+                <label for="lastName">Last name:</label>
                 <input type="text" id="lastName" th:name="lastName" required>
             </div>
-            <button class="register-button" type="submit">Zarejestruj</button>
+            <div class="form-group">
+                <label for="userName">User nick:</label>
+                <input type="text" id="userName" th:name="userName" required>
+            </div>
+            <button class="register-button" type="submit">Register</button>
             <br />
             <span> Registered already? <a href="/" th:href="@{/login}">Login here.</a>
             </span>

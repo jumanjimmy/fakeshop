@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <title>FakeShop</title>
@@ -7,8 +9,11 @@
 </head>
 <body>
 <header th:replace="~{fragments/header :: ShopHeader}"></header>
-<a th:href="@{/registration/register-form}" class="register-btn" style="float: right; margin-right: 20px; margin-top: 10px;">Rejestracja</a>
-<a th:href="@{/login}" class="register-btn" style="float: right; margin-right: 20px; margin-top: 40px;">Login</a>
+<div sec:authorize="isAnonymous()">
+<a th:href="@{/registration/register-form}" class="register-btn" style="float: right; margin-right: 20px; margin-top: 10px;">Register</a>
+<a th:href="@{/login}" class="register-btn" style="float: right; margin-right: 20px; margin-top: 10px;">Login</a>
+</div>
+
 <div th:if="${errorMessage}" class="alert alert-danger">
     <p th:text="${errorMessage}"></p>
 </div>
@@ -16,45 +21,45 @@
 <div class="filter-bar" style="float: left;">
     <form id="filter-form">
         <div>
-            <label for="condition">Stan:</label>
+            <label for="condition">Condition:</label>
             <select id="condition" name="condition">
-                <option value="all">Wszystkie</option>
-                <option value="new">Nowe</option>
-                <option value="used">Używane</option>
+                <option value="all">All</option>
+                <option value="new">New</option>
+                <option value="used">Used</option>
             </select>
         </div>
         <div>
-            <label for="price-from">Cena od:</label>
+            <label for="price-from">Price from:</label>
             <input type="text" id="price-from" name="price-from">
         </div>
         <div>
-            <label for="price-to">Cena do:</label>
+            <label for="price-to">To price:</label>
             <input type="text" id="price-to" name="price-to">
         </div>
         <div>
-            <button type="submit">Filtruj</button>
+            <button type="submit">Filter</button>
         </div>
     </form>
 </div>
 
 <div class="sort-bar" style="float: center; margin-top: 10px;">
-    <label>Sortuj według ceny:</label>
-    <button id="sort-lowest">Najniższa</button>
-    <button id="sort-highest">Najwyższa</button>
+    <label>Sort by price:</label>
+    <button id="sort-lowest">Lowest</button>
+    <button id="sort-highest">Highest</button>
 </div>
 
 <main class="main-content">
     <ul class="item-list">
         <li th:each="item : ${items}" class="item">
             <img th:src="@{${item.imgUrl}}">
-            <div class="item-details">
+            <div class="item-details" style="float: right;">
                 <p class="item-name" th:text="${item.name}"></p>
                 <div>
-                    <span>Cena:</span>
+                    <span>Price:</span>
                     <span th:text="${item.price}"></span>
                     <span>zł</span>
                 </div>
-                <a th:href="@{'/add/' + ${item.id}}" class="add-btn">Dodaj do koszyka</a>
+                <a th:href="@{'/add/' + ${item.id}}" class="add-btn">Add to cart</a>
             </div>
         </li>
     </ul>

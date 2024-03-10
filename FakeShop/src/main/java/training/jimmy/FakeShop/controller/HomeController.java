@@ -1,12 +1,15 @@
 package training.jimmy.FakeShop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import training.jimmy.FakeShop.ItemOperation;
+import training.jimmy.FakeShop.config.UserDetail;
 import training.jimmy.FakeShop.service.CartService;
 
 @Controller
@@ -21,7 +24,12 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String homePage(Model model){
+    public String homePage(Model model, @AuthenticationPrincipal UserDetail userDetail) {
+        if (userDetail != null) {
+            String firstName = userDetail.getFirstName();
+            model.addAttribute("firstName", firstName);
+        }
+
         model.addAttribute("items", cartService.getAllItems());
         return "home";
     }
@@ -30,16 +38,11 @@ public class HomeController {
     public String loginPage(){
         return "login";
     }
+
     @GetMapping("/error")
     public String errorPage() {
         return "error";
     }
-
-
-
-
-
-
 
 
     @GetMapping("/add/{itemId}")

@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <body>
 <header th:fragment="ShopHeader">
     <a href="/" class="home-link">
         <span class="title">FakeShop</span>
     </a>
 
+    <div sec:authorize="isAuthenticated()">
+        Hello <a class="nick" th:href="@{/profile}" sec:authentication="name"></a>!
+    </div>
+
     <a th:href="@{/order/cart}" class="cart-ico">
         <div>
-            <span>Koszyk (</span>
+            <span>Cart (</span>
             <span th:text="${@cart.counter}"></span>
             <span>)</span>
             <span th:text="${@cart.sum}"></span>

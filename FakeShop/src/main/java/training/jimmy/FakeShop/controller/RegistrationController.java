@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import training.jimmy.FakeShop.config.UserDetail;
 import training.jimmy.FakeShop.dto.UserDto;
 import training.jimmy.FakeShop.event.RegistrationCompleteEvent;
 import training.jimmy.FakeShop.exceptions.EmailAlreadyExistsException;
@@ -26,6 +27,7 @@ public class RegistrationController {
     private final IUserService userService;
     private final ApplicationEventPublisher publisher;
     private final VerificationTokenService tokenService;
+
 
 
     @GetMapping("/register-form")
