@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PracticeShop</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<header th:replace="~{fragments/header :: ShopHeader}"></header>
+
+    <div class="main-content">
+
+            <table cellspacing="0" style="border: 0px">
+                <tr th:each="cartItem : ${@cart.cartItems}">
+                    <td>1</td>
+                    <td>
+                        <img th:src="@{${cartItem.item.imgUrl}}">
+                    </td>
+                    <td th:text="${cartItem.item.name}"></td>
+                    <td style="display: flex; padding-top: 10px">
+                        <p th:text="${cartItem.counter}"></p>
+                    </td>
+                    <td th:text="${cartItem.price}"></td>
+
+                </tr>
+            </table>
+
+            <div class="summary">
+                <p><span>To pay</span><span th:text="${@cart.sum}"></span>zł</p>
+            </div>
+
+        <div class="summary">
+
+            <form th:action="@{/order/saveorder}" method="post">
+                <label>First name</label>
+                <input type="text" name="firstName" required>
+                <label>Last name</label>
+                <input type="text" name="lastName" required>
+                <label>Address</label>
+                <input type="text" name="address" required>
+                <label>Postcode</label>
+                <input type="text" name="postCode" required>
+                <label>City</label>
+                <input type="text" name="city" required>
+                <button type="submit" class="add-btn">Order</button>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</body>
+</html>

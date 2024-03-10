@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<header th:replace="~{fragments/header :: ShopHeader}"></header>
+
+
+<div class="profile-container">
+
+  <div th:each="image : ${imageList}">
+    <img th:src="@{'data:image/jpeg;base64,' + ${image.base64EncodedData}}" alt="Image" />
+  </div>
+  <div th:if="${user.avatar == null}">
+    <img src="/Images/default-avatar.jpg" alt="Domyślne zdjęcie profilowe" class="img-fluid rounded">
+  </div>
+  <a th:href="@{/addimage}" class="logout-button">Update Image</a>
+
+  <a class="nickname" th:text="${user.userName}">User Nick</a>
+  <p th:text="'Imię: ' + ${user.firstName}"></p>
+  <p th:text="'Nazwisko: ' + ${user.lastName}"></p>
+  <p th:text="'Email: ' + ${user.email}"></p>
+  <a th:href="@{/logout}" class="logout-button">Wyloguj</a>
+</div>
+</body>
+</html>
